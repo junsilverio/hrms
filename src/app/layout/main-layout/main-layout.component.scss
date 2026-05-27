@@ -1,0 +1,24 @@
+.layout-shell {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eef2f7 0%, #f8fafc 100%);
+}
+
+.layout-body {
+  flex: 1;
+  min-width: 0;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.layout-main {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .layout-body {
+    padding: 1rem;
+  }
+}

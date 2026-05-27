@@ -1,0 +1,57 @@
+<div class="page-grid">
+  <app-page-header
+    title="Payroll"
+    subtitle="Review payroll readiness, payment cycles, and processing statuses."
+    eyebrow="Payroll"
+  ></app-page-header>
+
+  <section class="stats-grid">
+    <app-stat-card
+      *ngFor="let stat of statCards"
+      [title]="stat.title"
+      [value]="stat.value"
+      [description]="stat.description"
+      [icon]="stat.icon"
+      [accent]="stat.accent"
+    ></app-stat-card>
+  </section>
+
+  <section class="content-card">
+    <div class="card-headline">
+      <div>
+        <h3 class="section-title">Payroll Run Details</h3>
+        <p class="text-muted">Net pay, bonuses, and processing status by employee.</p>
+      </div>
+      <button class="primary-btn" type="button">Run Payroll</button>
+    </div>
+
+    <div class="table-shell">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Department</th>
+            <th>Pay Period</th>
+            <th>Net Pay</th>
+            <th>Bonus</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of records">
+            <td>{{ record.employeeName }}</td>
+            <td>{{ record.department }}</td>
+            <td>{{ record.payPeriod }}</td>
+            <td>{{ record.netPay | currency:'USD':'symbol':'1.0-0' }}</td>
+            <td>{{ record.bonus | currency:'USD':'symbol':'1.0-0' }}</td>
+            <td>
+              <span class="badge" [ngClass]="record.status === 'Processed' ? 'badge-success' : 'badge-warning'">
+                {{ record.status }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,55 @@
+<div class="login-shell">
+  <section class="login-branding">
+    <div class="brand-badge">SmartAdmin inspired</div>
+    <h1>Human Resource Management System</h1>
+    <p>
+      Centralize workforce operations, attendance, payroll, and departmental visibility in one modern control center.
+    </p>
+
+    <div class="feature-list">
+      <article>
+        <strong>248</strong>
+        <span>Employees tracked</span>
+      </article>
+      <article>
+        <strong>96%</strong>
+        <span>Average attendance</span>
+      </article>
+      <article>
+        <strong>5</strong>
+        <span>Departments aligned</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="login-card">
+    <div class="login-card__header">
+      <span>Welcome back</span>
+      <h2>Sign in to continue</h2>
+      <p>Use the demo administrator account to access the HRMS dashboard.</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="login-form">
+      <label>
+        <span>Email address</span>
+        <input class="form-control" type="email" formControlName="email" placeholder="admin@hrms.com" />
+      </label>
+
+      <label>
+        <span>Password</span>
+        <input class="form-control" type="password" formControlName="password" placeholder="admin123" />
+      </label>
+
+      <div class="hint-row">
+        <small>Demo credentials: admin&#64;hrms.com / admin123</small>
+        <a routerLink="/dashboard">Preview dashboard</a>
+      </div>
+
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <button class="primary-btn login-btn" type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Signing in...' : 'Sign in' }}
+      </button>
+    </form>
+  </section>
+</div>

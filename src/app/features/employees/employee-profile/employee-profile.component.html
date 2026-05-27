@@ -1,0 +1,87 @@
+<div class="page-grid" *ngIf="employee as currentEmployee; else missingEmployee">
+  <app-page-header
+    [title]="currentEmployee.name"
+    [subtitle]="currentEmployee.position + ' • ' + currentEmployee.department"
+    eyebrow="Employee Profile"
+  ></app-page-header>
+
+  <section class="profile-hero content-card">
+    <div class="hero-main">
+      <img [src]="currentEmployee.avatar" [alt]="currentEmployee.name" />
+      <div>
+        <span class="badge" [ngClass]="currentEmployee.status === 'Active' ? 'badge-success' : 'badge-warning'">
+          {{ currentEmployee.status }}
+        </span>
+        <h3>{{ currentEmployee.name }}</h3>
+        <p>{{ currentEmployee.bio }}</p>
+        <div class="meta-row">
+          <span>{{ currentEmployee.email }}</span>
+          <span>{{ currentEmployee.phone }}</span>
+          <span>{{ currentEmployee.location }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <button class="secondary-btn" type="button">Send Message</button>
+      <button class="primary-btn" type="button">Edit Profile</button>
+    </div>
+  </section>
+
+  <section class="tab-bar content-card">
+    <button type="button" [class.active]="activeTab === 'overview'" (click)="selectTab('overview')">Overview</button>
+    <button type="button" [class.active]="activeTab === 'attendance'" (click)="selectTab('attendance')">Attendance</button>
+    <button type="button" [class.active]="activeTab === 'payroll'" (click)="selectTab('payroll')">Payroll</button>
+    <button type="button" [class.active]="activeTab === 'documents'" (click)="selectTab('documents')">Documents</button>
+  </section>
+
+  <section class="profile-grid" *ngIf="activeTab === 'overview'">
+    <article class="content-card info-card">
+      <h3 class="section-title">Employee Information</h3>
+      <dl>
+        <div><dt>Manager</dt><dd>{{ currentEmployee.manager }}</dd></div>
+        <div><dt>Join Date</dt><dd>{{ currentEmployee.joinDate }}</dd></div>
+        <div><dt>Leave Balance</dt><dd>{{ currentEmployee.leaveBalance }} days</dd></div>
+        <div><dt>Emergency Contact</dt><dd>{{ currentEmployee.emergencyContact }}</dd></div>
+      </dl>
+    </article>
+
+    <article class="content-card info-card">
+      <h3 class="section-title">Skills & Performance</h3>
+      <div class="performance-score">
+        <strong>{{ currentEmployee.performance }}%</strong>
+        <span>Performance score</span>
+      </div>
+      <div class="skills-list">
+        <span *ngFor="let skill of currentEmployee.skills">{{ skill }}</span>
+      </div>
+    </article>
+  </section>
+
+  <section class="content-card panel-copy" *ngIf="activeTab === 'attendance'">
+    <h3 class="section-title">Attendance Snapshot</h3>
+    <p class="text-muted">Current punctuality: 97% · Average weekly hours: 40.5 · Upcoming leave balance: {{ currentEmployee.leaveBalance }} days.</p>
+  </section>
+
+  <section class="content-card panel-copy" *ngIf="activeTab === 'payroll'">
+    <h3 class="section-title">Payroll Snapshot</h3>
+    <p class="text-muted">Base salary: {{ currentEmployee.salary | currency:'USD':'symbol':'1.0-0' }} · Last bonus credited in previous cycle · Bank account verified.</p>
+  </section>
+
+  <section class="content-card panel-copy" *ngIf="activeTab === 'documents'">
+    <h3 class="section-title">Documents</h3>
+    <ul>
+      <li>Employment contract.pdf</li>
+      <li>Performance review FY2025.pdf</li>
+      <li>Benefits enrollment form.pdf</li>
+    </ul>
+  </section>
+</div>
+
+<ng-template #missingEmployee>
+  <section class="content-card empty-state">
+    <h3 class="section-title">Employee not found</h3>
+    <p class="text-muted">The requested employee profile could not be located.</p>
+    <a class="primary-btn back-link" routerLink="/employees">Back to Employees</a>
+  </section>
+</ng-template>

@@ -1,0 +1,52 @@
+.stats-grid,
+.attendance-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.attendance-grid {
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+}
+
+.card-headline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.leave-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.leave-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(248, 250, 252, 0.95);
+}
+
+.leave-item p,
+.leave-item strong {
+  margin: 0;
+}
+
+.leave-item p {
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 1100px) {
+  .stats-grid,
+  .attendance-grid {
+    grid-template-columns: 1fr;
+  }
+}

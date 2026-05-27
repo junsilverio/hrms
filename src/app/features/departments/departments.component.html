@@ -1,0 +1,26 @@
+<div class="page-grid">
+  <app-page-header
+    title="Departments"
+    subtitle="Review structure, ownership, budget utilization, and current staffing needs."
+    eyebrow="Organization"
+  ></app-page-header>
+
+  <section class="department-grid">
+    <article class="content-card department-card" *ngFor="let department of departments">
+      <div class="department-card__head">
+        <div>
+          <h3>{{ department.name }}</h3>
+          <p>{{ department.description }}</p>
+        </div>
+        <span>{{ department.headcount }} staff</span>
+      </div>
+
+      <dl>
+        <div><dt>Manager</dt><dd>{{ department.manager }}</dd></div>
+        <div><dt>Budget</dt><dd>{{ department.budget }}</dd></div>
+        <div><dt>Open Positions</dt><dd>{{ department.openPositions }}</dd></div>
+        <div><dt>Utilization</dt><dd>{{ department.utilization }}%</dd></div>
+      </dl>
+    </article>
+  </section>
+</div>

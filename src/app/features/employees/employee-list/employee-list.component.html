@@ -1,0 +1,79 @@
+<div class="page-grid">
+  <app-page-header
+    title="Employees"
+    subtitle="Search, filter, and review employee records, assignments, and employment status."
+    eyebrow="Workforce"
+  ></app-page-header>
+
+  <section class="content-card filters-card">
+    <div class="filters-grid">
+      <label>
+        <span>Search</span>
+        <input class="form-control" type="text" [(ngModel)]="searchTerm" placeholder="Search by name, department, position" />
+      </label>
+
+      <label>
+        <span>Department</span>
+        <select class="form-control" [(ngModel)]="selectedDepartment">
+          <option *ngFor="let department of departments" [value]="department">{{ department }}</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Status</span>
+        <select class="form-control" [(ngModel)]="selectedStatus">
+          <option value="All">All</option>
+          <option value="Active">Active</option>
+          <option value="On Leave">On Leave</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="content-card">
+    <div class="card-summary">
+      <div>
+        <h3 class="section-title">Employee Directory</h3>
+        <p class="text-muted">{{ filteredEmployees.length }} employees shown from the mock workforce dataset.</p>
+      </div>
+      <button class="secondary-btn" type="button">Add Employee</button>
+    </div>
+
+    <div class="table-shell">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of filteredEmployees">
+            <td>
+              <div class="employee-cell">
+                <img [src]="employee.avatar" [alt]="employee.name" />
+                <div>
+                  <strong>{{ employee.name }}</strong>
+                  <span>{{ employee.email }}</span>
+                </div>
+              </div>
+            </td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.position }}</td>
+            <td>
+              <span class="badge" [ngClass]="employee.status === 'Active' ? 'badge-success' : 'badge-warning'">
+                {{ employee.status }}
+              </span>
+            </td>
+            <td>
+              <a class="secondary-btn action-link" [routerLink]="['/employees', employee.id]">View Profile</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

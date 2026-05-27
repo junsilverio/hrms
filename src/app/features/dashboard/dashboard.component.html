@@ -1,0 +1,81 @@
+<div class="page-grid">
+  <app-page-header
+    title="HR Dashboard"
+    subtitle="Monitor workforce performance, headcount distribution, attendance trends, and day-to-day activity."
+    eyebrow="Overview"
+  ></app-page-header>
+
+  <section class="stats-grid">
+    <app-stat-card
+      *ngFor="let stat of statCards"
+      [title]="stat.title"
+      [value]="stat.value"
+      [description]="stat.description"
+      [icon]="stat.icon"
+      [accent]="stat.accent"
+    ></app-stat-card>
+  </section>
+
+  <section class="dashboard-grid">
+    <article class="content-card chart-card">
+      <div class="chart-header">
+        <div>
+          <h3 class="section-title">Headcount by Department</h3>
+          <p class="text-muted">Current workforce mix across five core business functions.</p>
+        </div>
+      </div>
+      <div class="chart-canvas">
+        <canvas baseChart [data]="headcountChartData" [options]="headcountChartOptions" type="bar"></canvas>
+      </div>
+    </article>
+
+    <article class="content-card chart-card">
+      <div class="chart-header">
+        <div>
+          <h3 class="section-title">Monthly Attendance</h3>
+          <p class="text-muted">Attendance rate trend for the last eight months.</p>
+        </div>
+      </div>
+      <div class="chart-canvas">
+        <canvas baseChart [data]="monthlyAttendanceChartData" [options]="monthlyAttendanceChartOptions" type="line"></canvas>
+      </div>
+    </article>
+  </section>
+
+  <section class="dashboard-grid">
+    <article class="content-card list-card">
+      <div class="card-headline">
+        <h3 class="section-title">Recent Activity</h3>
+        <span class="text-muted">Live HR operations feed</span>
+      </div>
+
+      <div class="activity-list">
+        <div class="activity-item" *ngFor="let item of recentActivity">
+          <span class="activity-dot" [style.background]="item.accent"></span>
+          <div>
+            <strong>{{ item.title }}</strong>
+            <p>{{ item.description }}</p>
+          </div>
+          <small>{{ item.time }}</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="content-card list-card">
+      <div class="card-headline">
+        <h3 class="section-title">Upcoming Events</h3>
+        <span class="text-muted">Critical dates and people events</span>
+      </div>
+
+      <div class="event-list">
+        <div class="event-item" *ngFor="let event of upcomingEvents">
+          <div>
+            <strong>{{ event.title }}</strong>
+            <p>{{ event.date }}</p>
+          </div>
+          <span class="event-type">{{ event.type }}</span>
+        </div>
+      </div>
+    </article>
+  </section>
+</div>

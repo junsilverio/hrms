@@ -1,0 +1,145 @@
+.profile-hero,
+.hero-main,
+.meta-row,
+.tab-bar,
+.profile-grid,
+.skills-list {
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-hero,
+.tab-bar {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-main img {
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+}
+
+.hero-main h3,
+.hero-main p {
+  margin: 0;
+}
+
+.hero-main h3 {
+  font-size: 1.9rem;
+  margin-top: 0.65rem;
+}
+
+.hero-main p {
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+  max-width: 720px;
+}
+
+.meta-row {
+  flex-wrap: wrap;
+  color: var(--color-muted);
+  margin-top: 1rem;
+}
+
+.tab-bar {
+  flex-wrap: wrap;
+}
+
+.tab-bar button {
+  border: 0;
+  background: transparent;
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.tab-bar button.active {
+  background: rgba(30, 136, 229, 0.12);
+  color: var(--color-primary);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.info-card dl {
+  margin: 1.2rem 0 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.info-card dl div {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.info-card dt {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  margin-bottom: 0.35rem;
+}
+
+.info-card dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.performance-score {
+  margin-top: 1.2rem;
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(30, 136, 229, 0.12), rgba(66, 165, 245, 0.04));
+}
+
+.performance-score strong,
+.performance-score span {
+  display: block;
+}
+
+.performance-score strong {
+  font-size: 2rem;
+}
+
+.performance-score span {
+  color: var(--color-muted);
+}
+
+.skills-list {
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.skills-list span {
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.04);
+  font-weight: 600;
+}
+
+.panel-copy ul {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--color-muted);
+}
+
+.empty-state {
+  margin: 2rem;
+}
+
+.back-link {
+  display: inline-flex;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .profile-hero,
+  .hero-main,
+  .profile-grid {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+}

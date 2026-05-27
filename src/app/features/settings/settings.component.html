@@ -1,0 +1,46 @@
+<div class="page-grid">
+  <app-page-header
+    title="Settings"
+    subtitle="Manage organization preferences, notifications, and security controls."
+    eyebrow="Administration"
+  ></app-page-header>
+
+  <section class="settings-grid">
+    <article class="content-card settings-card">
+      <h3 class="section-title">Organization</h3>
+      <label>
+        <span>Company Name</span>
+        <input class="form-control" [(ngModel)]="companyName" type="text" />
+      </label>
+      <label>
+        <span>Support Email</span>
+        <input class="form-control" [(ngModel)]="supportEmail" type="email" />
+      </label>
+      <label>
+        <span>Timezone</span>
+        <input class="form-control" [(ngModel)]="timezone" type="text" />
+      </label>
+    </article>
+
+    <article class="content-card settings-card">
+      <h3 class="section-title">Preferences</h3>
+      <label class="toggle-row">
+        <div>
+          <strong>Desktop Notifications</strong>
+          <p>Receive alerts for leave, attendance, and payroll events.</p>
+        </div>
+        <input [(ngModel)]="allowNotifications" type="checkbox" />
+      </label>
+
+      <label class="toggle-row">
+        <div>
+          <strong>Require MFA</strong>
+          <p>Enforce multi-factor authentication for all administrators.</p>
+        </div>
+        <input [(ngModel)]="requireMfa" type="checkbox" />
+      </label>
+
+      <button class="primary-btn" type="button">Save Changes</button>
+    </article>
+  </section>
+</div>
