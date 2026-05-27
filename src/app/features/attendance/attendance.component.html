@@ -1,0 +1,76 @@
+<div class="page-grid">
+  <app-page-header
+    title="Attendance & Leave"
+    subtitle="Track check-ins, leave requests, and daily workforce availability in real time."
+    eyebrow="Attendance"
+  ></app-page-header>
+
+  <section class="stats-grid">
+    <app-stat-card
+      *ngFor="let stat of statCards"
+      [title]="stat.title"
+      [value]="stat.value"
+      [description]="stat.description"
+      [icon]="stat.icon"
+      [accent]="stat.accent"
+    ></app-stat-card>
+  </section>
+
+  <section class="attendance-grid">
+    <article class="content-card">
+      <div class="card-headline">
+        <h3 class="section-title">Today's Attendance</h3>
+        <span class="text-muted">Latest employee check-ins and attendance modes</span>
+      </div>
+
+      <div class="table-shell">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Department</th>
+              <th>Status</th>
+              <th>Check In</th>
+              <th>Check Out</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of attendanceRecords">
+              <td>{{ record.employeeName }}</td>
+              <td>{{ record.department }}</td>
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="record.status === 'Present' ? 'badge-success' : record.status === 'Remote' ? 'badge-warning' : 'badge-danger'"
+                >
+                  {{ record.status }}
+                </span>
+              </td>
+              <td>{{ record.checkIn }}</td>
+              <td>{{ record.checkOut }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <div class="card-headline">
+        <h3 class="section-title">Leave Requests</h3>
+        <span class="text-muted">Upcoming leave and approval queue</span>
+      </div>
+
+      <div class="leave-list">
+        <div class="leave-item" *ngFor="let request of leaveRequests">
+          <div>
+            <strong>{{ request.employeeName }}</strong>
+            <p>{{ request.type }} · {{ request.dates }}</p>
+          </div>
+          <span class="badge" [ngClass]="request.status === 'Approved' ? 'badge-success' : 'badge-warning'">
+            {{ request.status }}
+          </span>
+        </div>
+      </div>
+    </article>
+  </section>
+</div>

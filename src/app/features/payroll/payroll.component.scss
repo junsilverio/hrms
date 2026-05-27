@@ -1,0 +1,30 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.card-headline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.card-headline p,
+.card-headline h3 {
+  margin: 0;
+}
+
+.card-headline p {
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .stats-grid,
+  .card-headline {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+}

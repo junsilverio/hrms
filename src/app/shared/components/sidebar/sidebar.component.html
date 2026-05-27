@@ -1,0 +1,27 @@
+<aside class="sidebar" [class.collapsed]="collapsed">
+  <div class="brand-block">
+    <div class="brand-icon">H</div>
+    <div class="brand-copy" *ngIf="!collapsed">
+      <strong>HRMS</strong>
+      <span>Smart workspace</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a
+      *ngFor="let item of navItems"
+      class="sidebar-link"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: item.route !== '/employees' }"
+    >
+      <span class="icon">{{ item.icon }}</span>
+      <span *ngIf="!collapsed">{{ item.label }}</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer" *ngIf="!collapsed">
+    <p>HR insight center</p>
+    <span>248 employees monitored</span>
+  </div>
+</aside>
